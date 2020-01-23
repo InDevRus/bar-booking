@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Бронирование места</title>
+    <link rel="stylesheet" href="/css/layout/general.css">
+</head>
+<body>
+<main>
+    <img src="/images/scheme.jpg" class="scheme" alt="Схема бара" title="Схема бара">
+
+    <article>
+        <form method="get" action="/booking/table">
+            Выберите стол:
+            <label>
+                <select required name="tableNumber">
+                    <th:block th:each="number: ${T(org.indevrus.barbooking.utilities.BookingConstants).ALL_TABLES}">
+                        <option th:value="${number}" th:text="${number}"></option>
+                    </th:block>
+                </select>
+            </label>
+
+            <input type="submit" value="Далее">
+        </form>
+
+        <form action="/profile/">
+            <input type="submit" value="Искать заказы">
+        </form>
+    </article>
+</main>
+</body>
+</html>

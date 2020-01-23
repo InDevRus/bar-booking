@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ваши заказы</title>
+    <link rel="stylesheet" href="/css/layout/general.css">
+</head>
+<body>
+<main style="display: block">
+    <form method="get" action="/profile/show">
+        <label>Ваше имя: <input name="name"></label>
+
+        <label>Номер телефона <input name="phone"></label>
+
+        <input type="submit" value="Искать">
+    </form>
+
+    <form action="/">
+        <input type="submit" value="Назад">
+    </form>
+</main>
+</body>
+</html>

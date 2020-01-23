@@ -1,0 +1,21 @@
+label {
+    transition-property: transform, background-color, color;
+    transition-duration: .5s, .5s, .5s;
+}
+
+section.forms input:checked + label[for],
+input#date-0:checked ~ #dates > label[for="date-0"],
+input#date-1:checked ~ #dates > label[for="date-1"],
+input#date-2:checked ~ #dates > label[for="date-2"],
+input#date-3:checked ~ #dates > label[for="date-3"],
+input#date-4:checked ~ #dates > label[for="date-4"],
+input#date-5:checked ~ #dates > label[for="date-5"],
+input#date-6:checked ~ #dates > label[for="date-6"],
+input#date-7:checked ~ #dates > label[for="date-7"],
+input#date-8:checked ~ #dates > label[for="date-8"],
+input#date-9:checked ~ #dates > label[for="date-9"],
+input#date-10:checked ~ #dates > label[for="date-10"] {
+    transform: scale(1.2);
+    background-color: blue;
+    color: white;
+}

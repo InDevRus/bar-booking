@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ошибка</title>
+    <link rel="stylesheet" href="/css/layout/general.css">
+    <link rel="stylesheet" href="/css/layout/form.css">
+    <link rel="stylesheet" href="/css/logic/animations.css">
+    <link rel="stylesheet" href="/css/logic/date-forms.css">
+</head>
+<body>
+<main>
+    <img src="/images/scheme.jpg" class="scheme" alt="Схема бара" title="Схема бара">
+    <article>
+        <p th:each="error : ${errors}" th:text="${error}"></p>
+
+        <form method="get" action="/booking/table">
+            <label hidden>
+                <input name="tableNumber" th:value="${tableNumber}" hidden>
+            </label>
+
+            <input type="submit" value="Попробовать снова">
+        </form>
+    </article>
+</main>
+</body>
+</html>

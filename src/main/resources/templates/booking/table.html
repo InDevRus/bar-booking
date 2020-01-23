@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Подтверждение заказа</title>
+    <link rel="stylesheet" href="/css/layout/general.css">
+    <link rel="stylesheet" href="/css/layout/form.css">
+    <link rel="stylesheet" href="/css/logic/animations.css">
+    <link rel="stylesheet" href="/css/logic/date-forms.css">
+</head>
+<body>
+<main>
+    <img src="/images/scheme.jpg" class="scheme" alt="Схема бара" title="Схема бара">
+
+    <article>
+        <th:block th:each="date, dateStat: ${dates}">
+            <!--suppress HtmlFormInputWithoutLabel -->
+            <input th:id="|date-${dateStat.index}|"
+                   name="chooseDate"
+                   type="radio"
+                   hidden>
+        </th:block>
+
+        Выберите дату:
+
+        <section id="dates" class="label-flex">
+            <label th:each="date, dateStat: ${dates}" th:for="|date-${dateStat.index}|"
+                   th:text="${dayMonthFormatter.format(date.getTime())}"></label>
+        </section>
+
+        <section class="forms">
+            <form th:each="date, dateStat: ${dates}" th:id="|date-form-${dateStat.index}|" method="post"
+                  action="/booking/submit">
+                <label hidden>
+                    <input name="date" th:value="${dateFormatter.format(date.getTime())}" hidden readonly>
+                </label>
+
+                <label hidden>
+                    <input name="tableNumber" th:value="${tableNumber}" hidden readonly>
+                </label>
+
+                <div class="label-flex">
+                    Выберите нужное время (несколько, если нужно забронировать на несколько часов):
+                    <th:block th:each="timespan: ${freePlaces.get(date)}">
+                        <!--suppress HtmlFormInputWithoutLabel -->
+                        <input
+                                th:id="|date-${dateStat.index}-timespan-${timespan}|"
+                                name="timespans"
+                                type="checkbox"
+                                th:value="${timespan}"
+                                hidden>
+                        <label th:for="|date-${dateStat.index}-timespan-${timespan}|"
+                               th:text="${timespan.start}"></label>
+                    </th:block>
+                </div>
+
+                Ваше имя:
+                <label>
+                    <input name="name" pattern="[А-Яа-яЁё]{2,12}" required>
+                </label>
+
+                <br>
+
+                Ваш телефон:
+                <label>
+                    +7 <input name="phone" pattern="\d{10}" required>
+                </label>
+
+                <input type="submit" value="Забронировать">
+            </form>
+        </section>
+
+        <form action="/">
+            <input type="submit" value="Изменить стол">
+        </form>
+    </article>
+</main>
+</body>
+</html>

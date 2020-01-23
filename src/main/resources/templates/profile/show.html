@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ваши заказы</title>
+    <link rel="stylesheet" href="/css/layout/general.css">
+</head>
+<body>
+<main style="display: block">
+    <p>Ваш телефон: <span th:text='"+7" + ${phoneNumber}'></span></p>
+    <p>Ваше имя: <span th:text="${name}"></span></p>
+
+    <table th:if="${bookings}">
+        <tr>
+            <th>Дата</th>
+            <th>Время</th>
+            <th>Номер стола</th>
+        </tr>
+        <th:block th:each="booking: ${bookings}" th:object="${booking}">
+            <tr>
+                <td th:text="${dateFormatter.format(booking.date.getTime())}"></td>
+                <td th:text="*{timespan.start}"></td>
+                <td th:text="*{tableNumber}"></td>
+            </tr>
+        </th:block>
+    </table>
+
+    <p th:unless="${bookings}">Ни одного заказа не найдено</p>
+
+    <form action="/profile/">
+        <input type="submit" value="Искать">
+    </form>
+
+    <form action="/">
+        <input type="submit" value="Забронировать">
+    </form>
+</main>
+</body>
+</html>

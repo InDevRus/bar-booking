@@ -1,0 +1,14 @@
+input#date-0:not(:checked) ~ section.forms > form#date-form-0,
+input#date-1:not(:checked) ~ section.forms > form#date-form-1,
+input#date-2:not(:checked) ~ section.forms > form#date-form-2,
+input#date-3:not(:checked) ~ section.forms > form#date-form-3,
+input#date-4:not(:checked) ~ section.forms > form#date-form-4,
+input#date-5:not(:checked) ~ section.forms > form#date-form-5,
+input#date-6:not(:checked) ~ section.forms > form#date-form-6,
+input#date-7:not(:checked) ~ section.forms > form#date-form-7,
+input#date-8:not(:checked) ~ section.forms > form#date-form-8,
+input#date-8:not(:checked) ~ section.forms > form#date-form-8,
+input#date-9:not(:checked) ~ section.forms > form#date-form-9,
+input#date-10:not(:checked) ~ section.forms > form#date-form-10 {
+    display: none;
+}
