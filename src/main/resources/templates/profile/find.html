@@ -8,9 +8,9 @@
 <body>
 <main style="display: block">
     <form method="get" action="/profile/show">
-        <label>Ваше имя: <input name="name"></label>
+        <label>Ваше имя: <input name="name" pattern="[А-Яа-яЁё]{2,12}></label>
         <br>
-        <label>Номер телефона <input name="phone"></label>
+        <label>Номер телефона: +7 <input name="phone" pattern="\d{10}"></label>
 
         <input type="submit" value="Искать">
     </form>
